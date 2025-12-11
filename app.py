@@ -5,7 +5,7 @@ import time
 
 app = Flask(__name__)
 
-# Tarayıcı gibi görünmek için gerekli kimlik bilgisi (Siteler bot sanıp engellemesin diye)
+# Sahte Kimlik=
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
     'Accept-Language': 'en-US,en;q=0.9',
@@ -158,4 +158,5 @@ def index():
     return render_template('index.html', steam_games=steam, itch_games=itch, epic_games=epic, stats=stats)
 
 if __name__ == '__main__':
+
     app.run(debug=True, port=5000)
