@@ -95,7 +95,7 @@ def get_itchio_data():
             
     return games_list
 
-def get_epic_data():
+def get_epic_data():  # Şu anda sadece ücretsiz olanları alıyor. Kampanyadakiler olarak değiştirilecek.
     """Epic Games Ücretsizleri ve Linkleri"""
     url = "https://store-site-backend-static.ak.epicgames.com/freeGamesPromotions"
     games_list = []
@@ -109,7 +109,7 @@ def get_epic_data():
             
             for game in elements:
                 promotions = game.get('promotions')
-                # Sadece aktif promosyonları al
+                # Aktif promosyonları al
                 if promotions and promotions.get('promotionalOffers'):
                     offers = promotions['promotionalOffers']
                     if offers and len(offers) > 0:
@@ -160,4 +160,5 @@ def index():
 if __name__ == '__main__':
 
     app.run(debug=True, port=5000)
+
 
