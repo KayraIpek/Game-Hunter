@@ -23,7 +23,7 @@ def get_steam_data():
             soup = BeautifulSoup(response.content, 'html.parser')
             rows = soup.select('#search_resultsRows a')
             
-            # İlk 15 oyunu al
+            # İlk 15 oyunu al (Bu sayı arttırılacak ve tamamını çeker hale gelecektir.)
             for row in rows[:15]:
                 try:
                     title = row.find('span', class_='title').text.strip()
@@ -141,7 +141,7 @@ def get_epic_data():
 
 @app.route('/')
 def index():
-    # Cache yok, her seferinde taze veri çek
+    # Orçun Hoca'ya "Cache" sor.
     steam = get_steam_data()
     itch = get_itchio_data()
     epic = get_epic_data()
@@ -154,9 +154,10 @@ def index():
         'last_update': time.strftime('%H:%M:%S')
     }
     
-    # HTML'e gönder
+    # HTML'e gönderir ve sayfayı oluşturur.
     return render_template('index.html', steam_games=steam, itch_games=itch, epic_games=epic, stats=stats)
 
 if __name__ == '__main__':
 
     app.run(debug=True, port=5000)
+
